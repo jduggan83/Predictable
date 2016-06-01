@@ -5,12 +5,12 @@
 	  </div>
 	  <div class="center">My Predictions</div>
 	</ons-toolbar>
-
-	<ons-list-item modifier="chevron" onclick="menu.setMainPage('components/matches/view.html', {closeMenu: true})">
-		ireland v Wales
-    </ons-list-item>
-    <ons-list-item modifier="chevron" class="center" onclick="menu.setMainPage('components/my-predictions/view.html', {closeMenu: true})">
-		
-		My Predictions
-    </ons-list-item>
+	<ons-navigator var="myNavigator">
+		<ons-list-item modifier="chevron" onclick="myNavigator.pushPage('components/my-predictions/view.html', { 'animation': 'slide' })">
+			ireland v Wales
+		</ons-list-item>
+		<ons-list-item modifier="chevron" onclick="myNavigator.pushPage('components/my-predictions/view.html', { 'animation': 'slide' })">
+			My Predictions
+		</ons-list-item>
+	</ons-navigator>
 </ons-page>
