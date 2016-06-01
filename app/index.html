@@ -12,16 +12,23 @@
       module.controller('PageController', function($scope) {
         ons.ready(function() {
           // Init code here
+            //onclick="myNavigator.pushPage('components/match-details/view.html', { 'animation': 'slide' })"
         });
+          $scope.pop = function(){
+            console.log("dd");
+          };
       });
     </script>
   </head>
   <body ng-controller="AppController">
-	<ons-sliding-menu
-		  main-page="components/matches/view.html"
-		  menu-page="components/common/menu.html"
-		  side="left"
-		  var="menu">
-	</ons-sliding-menu>
+    <ons-sliding-menu
+            menu-page="components/common/menu.html"
+            side="left"
+            max-slide-distance="250px"
+            var="menu">
+            <div class="main">
+                <ons-navigator title="Navigator" var="myNavigator" page="components/matches/view.html"></ons-navigator>
+            </div>
+    </ons-sliding-menu>
   </body>
 </html>
