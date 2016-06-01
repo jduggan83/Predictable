@@ -1,0 +1,16 @@
+<ons-page>
+	<ons-toolbar>
+	  <div class="left">
+		<ons-toolbar-button  onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
+	  </div>
+	  <div class="center">My Predictions</div>
+	</ons-toolbar>
+
+	<ons-list-item modifier="chevron" onclick="menu.setMainPage('components/matches/view.html', {closeMenu: true})">
+		ireland v Wales
+    </ons-list-item>
+    <ons-list-item modifier="chevron" class="center" onclick="menu.setMainPage('components/my-predictions/view.html', {closeMenu: true})">
+		
+		My Predictions
+    </ons-list-item>
+</ons-page>
