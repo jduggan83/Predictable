@@ -1,0 +1,19 @@
+{
+  "name": "predictable",
+  "version": "1.0.0",
+  "description": "Compete against your friends in this sport predictions game.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jduggan83/predictable.git"
+  },
+  "author": "Jonathan Duggan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jduggan83/predictable/issues"
+  },
+  "homepage": "https://github.com/jduggan83/predictable#readme"
+}
