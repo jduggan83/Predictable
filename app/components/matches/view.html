@@ -3,12 +3,20 @@
 	  <div class="left">
 		<ons-toolbar-button  onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
 	  </div>
-	  <div class="center">Matches</div>
+	  <div class="center">Matchesf</div>
 	</ons-toolbar>
 		<ons-list-item modifier="chevron" onclick="myNavigator.pushPage('components/match-details/view.html', { 'animation': 'slide' })">
-			ireland v Wales
+			<ons-row>
+				<ons-col></ons-col>
+				<ons-col>Ireland vs sweden</ons-col>
+				<ons-col></ons-col>
+			</ons-row>
 		</ons-list-item>
 		<ons-list-item modifier="chevron" onclick="myNavigator.pushPage('components/match-details/view.html', { 'animation': 'slide' })">
-			My Predictions
+			<ons-row>
+				<ons-col>Ireland</ons-col>
+				<ons-col>v</ons-col>
+				<ons-col>Sweden</ons-col>
+			</ons-row>
 		</ons-list-item>
 </ons-page>

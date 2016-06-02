@@ -6,19 +6,7 @@
     <link rel="stylesheet" href="bower_components/OnsenUI/css/onsen-css-components.css"/>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/OnsenUI/js/onsenui.js"></script>
-    <script>
-      var module = ons.bootstrap('my-app', ['onsen']);
-      module.controller('AppController', function($scope) { });
-      module.controller('PageController', function($scope) {
-        ons.ready(function() {
-          // Init code here
-            //onclick="myNavigator.pushPage('components/match-details/view.html', { 'animation': 'slide' })"
-        });
-          $scope.pop = function(){
-            console.log("dd");
-          };
-      });
-    </script>
+    <script src="app.js"></script>
   </head>
   <body ng-controller="AppController">
     <ons-sliding-menu
