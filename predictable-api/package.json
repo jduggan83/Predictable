@@ -1,0 +1,24 @@
+{
+  "name": "predictable-api",
+  "version": "0.0.0",
+  "description": "predictable-api",
+  "author": "jduggan83",
+  "main": "cluster.js",
+  "engines": {
+    "node": "6.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "nodal": "0.12.6"
+  },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "mocha": "~2.4.5"
+  },
+  "scripts": {
+    "test": "mocha ./test/runner.js",
+    "start": "node cluster.js",
+    "worker": "node worker.js"
+  },
+  "private": true
+}
