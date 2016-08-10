@@ -8,10 +8,12 @@ class V1PredictionsController extends Nodal.Controller {
   index() {
 
     Prediction.query()
+        .join('user')
+        .join('match')
       .where(this.params.query)
       .end((err, models) => {
 
-        this.respond(err || models);
+        this.respond(err || models, ['id', 'result', {match: ['home', 'away']}, {user: ['username', 'email']}]);
 
       });
 

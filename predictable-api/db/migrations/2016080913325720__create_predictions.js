@@ -12,7 +12,7 @@ class CreatePredictions extends Nodal.Migration {
   up() {
 
     return [
-      this.createTable("predictions", [{"name":"match_id","type":"int"},{"name":"result","type":"string"},{"name":"user_id","type":"int"},{"name":"match_id","type":"int"}])
+      this.createTable("predictions", [{"name":"match_id","type":"int"},{"name":"result","type":"string"},{"name":"user_id","type":"int"}])
     ];
 
   }
