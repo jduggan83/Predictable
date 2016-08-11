@@ -1,11 +1,16 @@
-var module = ons.bootstrap('my-app', ['onsen']);
-      module.controller('AppController', function($scope) { });
-      module.controller('PageController', function($scope) {
-        ons.ready(function() {
-          // Init code here
-            //onclick="myNavigator.pushPage('components/match-details/view.html', { 'animation': 'slide' })"
-        });
-          $scope.pop = function(){
-            console.log("dd");
-          };
-      });
+var app = ons.bootstrap('predictable-app', [
+    'onsen',
+    'ngRoute',
+    'ngSanitize',
+    'ngAnimate',
+    'ngTouch',
+    'app.controllers',
+    'app.services'
+]).
+config(['$provide', function($provide) {
+
+    var CONFIG = {
+        
+    };
+    $provide.value('CONFIG', CONFIG);
+}]);

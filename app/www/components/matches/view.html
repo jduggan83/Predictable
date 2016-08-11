@@ -1,22 +1,26 @@
-<ons-page>
+<ons-page ng-controller="MatchController">
 	<ons-toolbar>
 	  <div class="left">
 		<ons-toolbar-button  onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
 	  </div>
-	  <div class="center">Matchesf</div>
+	  <div class="center">Upcoming Matches</div>
 	</ons-toolbar>
-		<ons-list-item modifier="chevron" onclick="myNavigator.pushPage('components/match-details/view.html', { 'animation': 'slide' })">
+	<ons-list>
+		<ons-list-item modifier="chevron" class="item" ons-lazy-repeat="MyDelegate">
 			<ons-row>
-				<ons-col></ons-col>
-				<ons-col>Ireland vs sweden</ons-col>
-				<ons-col></ons-col>
+				<ons-col width="80px">
+					<img ng-src="http://lorempixel.com/60/60/?{{item.rand}}" class="item-thum"></img>
+				</ons-col>
+				<ons-col>
+					<header>
+						<span class="item-title">{{item.home}}</span>
+						<span class="item-label">{{item.away}}</span>
+					</header>
+					<div ng-show="item.desc==''">
+						<p><span style='opacity: 0.7;'><ons-icon icon='fa-spinner' spin='true'></ons-icon> Loading bacon...</p></span></div>
+					<p class="item-desc">{{ item.desc }}</p>
+				</ons-col>
 			</ons-row>
 		</ons-list-item>
-		<ons-list-item modifier="chevron" onclick="myNavigator.pushPage('components/match-details/view.html', { 'animation': 'slide' })">
-			<ons-row>
-				<ons-col>Ireland</ons-col>
-				<ons-col>v</ons-col>
-				<ons-col>Sweden</ons-col>
-			</ons-row>
-		</ons-list-item>
+	</ons-list>
 </ons-page>
