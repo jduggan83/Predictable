@@ -23,14 +23,14 @@ services.factory('matchService', ['$http', 'CONFIG', function($http, CONFIG) {
 services.factory('predictionService', ['$http', 'CONFIG', function($http, CONFIG) {
     return {
         list: function(){
-            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions');
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions?user__id='+CONFIG.user_id);
         },
         find:  function(predictionId){
             return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions/' + predictionId);
         },
         create:  function(matchId, result){
             var prediction = {
-                user_id: 1,
+                user_id: CONFIG.user_id,
                 match_id: matchId,
                 result: result
             };

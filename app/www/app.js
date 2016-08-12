@@ -10,6 +10,7 @@ var app = ons.bootstrap('predictable-app', [
 config(['$provide', function($provide) {
 
     var CONFIG = {
+        user_id: 1,
         baseUrl: 'http://localhost:3000',
         version: 'v1'
     };

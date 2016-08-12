@@ -3,7 +3,7 @@
 const Nodal = require('nodal');
 const Match = Nodal.require('app/models/match.js');
 
-class V1MatchesController extends Nodal.Controller {
+class V1MatchesController extends Nodal.AuthController {
 
   index() {
 
@@ -29,11 +29,7 @@ class V1MatchesController extends Nodal.Controller {
 
   create() {
 
-    Match.create(this.params.body, (err, model) => {
 
-      this.respond(err || model);
-
-    });
 
   }
 

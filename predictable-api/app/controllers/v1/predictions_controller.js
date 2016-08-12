@@ -3,7 +3,7 @@
 const Nodal = require('nodal');
 const Prediction = Nodal.require('app/models/prediction.js');
 
-class V1PredictionsController extends Nodal.Controller {
+class V1PredictionsController extends Nodal.AuthController {
 
   index() {
 
