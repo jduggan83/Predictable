@@ -1,22 +1,21 @@
-<ons-page ng-controller="MatchController">
+<ons-page>
 	<ons-toolbar>
 	  <div class="left">
 		<ons-toolbar-button  onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
 	  </div>
-	  <div class="center">Upcoming Matches</div>
+	  <div class="center">Predictions</div>
 	</ons-toolbar>
 	<ons-list>
-		<ons-list-item modifier="chevron" class="item" ng-repeat="match in matches">
+		<ons-list-item modifier="chevron" class="item" ng-repeat="prediction in predictions" ng-click="showPrediction(prediction)">
 			<ons-row>
 				<ons-col width="80px">
 
 				</ons-col>
 				<ons-col>
 					<header>
-						<span class="item-title">{{match.home}} v {{match.away}}</span>
-						<span class="item-label">Venue: {{match.home}}</span>
+						<span class="item-title">{{prediction.match.home}} v {{prediction.match.away}}</span>
+						<span class="item-label">{{prediction.result}}</span>
 					</header>
-					<p class="item-desc">{{match.information}}</p>
 				</ons-col>
 			</ons-row>
 		</ons-list-item>

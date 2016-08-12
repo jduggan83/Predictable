@@ -1,0 +1,24 @@
+<ons-page>
+	<ons-toolbar>
+	  <div class="left">
+		<ons-toolbar-button  onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
+	  </div>
+	  <div class="center">Upcoming Matches</div>
+	</ons-toolbar>
+	<ons-list>
+		<ons-list-item modifier="chevron" class="item" ng-repeat="match in matches" ng-click="showMatch(match)">
+			<ons-row>
+				<ons-col width="80px">
+
+				</ons-col>
+				<ons-col>
+					<header>
+						<span class="item-title">{{match.home}} v {{match.away}}</span>
+						<span class="item-label">Venue: {{match.home}}</span>
+					</header>
+					<p class="item-desc">{{match.information}}</p>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+	</ons-list>
+</ons-page>

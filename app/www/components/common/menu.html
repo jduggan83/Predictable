@@ -1,11 +1,11 @@
-<ons-list>
-    <ons-list-item modifier="chevron" onclick="menu.setMainPage('components/my-predictions/view.html', {closeMenu: true})">
+<ons-list ng-controller="MenuController">
+    <ons-list-item modifier="chevron" ng-click="showPage('components/league-standings/view.html')">
         Standings
     </ons-list-item>
-    <ons-list-item modifier="chevron" onclick="menu.setMainPage('components/matches/view.html', {closeMenu: true})">
+    <ons-list-item modifier="chevron" ng-click="showPage('components/matches/main.html')">
 		Matches
     </ons-list-item>
-    <ons-list-item modifier="chevron" onclick="menu.setMainPage('components/my-predictions/view.html', {closeMenu: true})">
+    <ons-list-item modifier="chevron" ng-click="showPage('components/predictions/main.html')">
 		My Predictions
     </ons-list-item>
 </ons-list>

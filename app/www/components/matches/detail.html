@@ -3,12 +3,12 @@
 		<div class="left">
 			<ons-back-button>Back</ons-back-button>
 		</div>
-		<div class="center">Ireland v Sweden</div>
+		<div class="center">{{match.home}} v {{match.away}}</div>
 	</ons-toolbar>
   <ons-row align="top">
     <ons-col>
       <div class="Demo">
-        This cell should be top-aligned.
+          <ons-button modifier="material" ng-click="predictMatch('HOME')">Home</ons-button>
       </div>
     </ons-col>
     <ons-col>
@@ -18,7 +18,7 @@
     </ons-col>
     <ons-col>
       <div class="Demo">
-        This cell should be top-aligned.
+          <ons-button modifier="material" ng-click="predictMatch('AWAY')">Away</ons-button>
       </div>
     </ons-col>
   </ons-row>

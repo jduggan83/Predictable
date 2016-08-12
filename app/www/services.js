@@ -6,16 +6,16 @@ var services = angular.module('app.services', []);
 services.factory('matchService', ['$http', 'CONFIG', function($http, CONFIG) {
     return {
         list: function(){
-            return $http.get('http://localhost:3000/v1/matches');
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/matches');
         },
         find:  function(matchId){
-            return $http.get('http://localhost:3000/v1/matches/' + matchId);
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/matches/' + matchId);
         },
         create:  function(match){
-            return $http.post('/matches', match);
+            return $http.post(CONFIG.baseUrl + '/'+ CONFIG.version + '/matches', match);
         },
         update:  function(match){
-            return $http.put('/matches' + match.id, match);
+            return $http.put(CONFIG.baseUrl + '/'+ CONFIG.version + '/matches/' + match.id, match);
         }
     };
 }]);
@@ -23,16 +23,22 @@ services.factory('matchService', ['$http', 'CONFIG', function($http, CONFIG) {
 services.factory('predictionService', ['$http', 'CONFIG', function($http, CONFIG) {
     return {
         list: function(){
-            return $http.get('http://localhost:3000/v1/predictions');
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions');
         },
         find:  function(predictionId){
-            return $http.get('http://localhost:3000/v1/predictions/' + predictionId);
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions/' + predictionId);
         },
-        create:  function(prediction){
-            return $http.post('/predictions', prediction);
+        create:  function(matchId, result){
+            var prediction = {
+                user_id: 1,
+                match_id: matchId,
+                result: result
+            };
+
+            return $http.post(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions', prediction);
         },
         update:  function(prediction){
-            return $http.put('/predictions' + prediction.id, prediction);
+            return $http.put(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions/' + prediction.id, prediction);
         }
     };
 }]);
