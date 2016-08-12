@@ -6,19 +6,17 @@
 	  <div class="center">Upcoming Matches</div>
 	</ons-toolbar>
 	<ons-list>
-		<ons-list-item modifier="chevron" class="item" ons-lazy-repeat="MyDelegate">
+		<ons-list-item modifier="chevron" class="item" ng-repeat="match in matches">
 			<ons-row>
 				<ons-col width="80px">
-					<img ng-src="http://lorempixel.com/60/60/?{{item.rand}}" class="item-thum"></img>
+
 				</ons-col>
 				<ons-col>
 					<header>
-						<span class="item-title">{{item.home}}</span>
-						<span class="item-label">{{item.away}}</span>
+						<span class="item-title">{{match.home}} v {{match.away}}</span>
+						<span class="item-label">Venue: {{match.home}}</span>
 					</header>
-					<div ng-show="item.desc==''">
-						<p><span style='opacity: 0.7;'><ons-icon icon='fa-spinner' spin='true'></ons-icon> Loading bacon...</p></span></div>
-					<p class="item-desc">{{ item.desc }}</p>
+					<p class="item-desc">{{match.information}}</p>
 				</ons-col>
 			</ons-row>
 		</ons-list-item>
