@@ -1,11 +1,23 @@
-<ons-list ng-controller="MenuController">
-    <ons-list-item modifier="chevron" ng-click="showPage('components/league-standings/view.html')">
-        Standings
-    </ons-list-item>
-    <ons-list-item modifier="chevron" ng-click="showPage('components/matches/main.html')">
-		Matches
-    </ons-list-item>
-    <ons-list-item modifier="chevron" ng-click="showPage('components/predictions/main.html')">
-		My Predictions
-    </ons-list-item>
-</ons-list>
+<ons-page>
+    <ons-list>
+        <ons-list-header>Menu</ons-list-header>
+       <ons-list-item tappable ng-click="pageSplitter.toggle()">
+           League Standings
+        </ons-list-item>
+    </ons-list>
+    <ons-list>
+        <ons-list-header>Competetion</ons-list-header>
+        <ons-list-item tappable ng-click="pageSplitter.toggle()">
+            <div class="left">
+                <ons-input type="radio" name="categoryGroup" input-id="competition-all" checked></ons-input>
+            </div>
+            <label class="center" for="competition-all">All</label>
+        </ons-list-item>
+        <ons-list-item tappable ng-click="pageSplitter.toggle()">
+            <div class="left">
+                <ons-input type="radio" name="categoryGroup" input-id="competition-premier"></ons-input>
+            </div>
+            <label class="center" for="competition-premier">Premier League</label>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

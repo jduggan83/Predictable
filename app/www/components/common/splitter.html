@@ -1,0 +1,23 @@
+<ons-splitter>
+    <ons-splitter-side var="pageSplitter" side="left" collapse swipe-target-width="50px" page="components/common/menu.html">
+    </ons-splitter-side>
+    <ons-splitter-content>
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <!-- Toolbar-button with different icons depending on the platform. -->
+                    <ons-toolbar-button ng-click="pageSplitter.toggle()">
+                        <ons-icon icon="ion-navicon, material:md-menu" size="32px, material:24px"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">Predictable</div>
+            </ons-toolbar>
+            <ons-tabbar var="pageTabBar" position="auto" animation="slide">
+                <ons-tab page="components/matches/list.html" label="Upcoming Matches" active>
+                </ons-tab>
+                <ons-tab page="components/predictions/list.html" label="My Predictions">
+                </ons-tab>
+            </ons-tabbar>
+        </ons-page>
+    </ons-splitter-content>
+</ons-splitter>

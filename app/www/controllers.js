@@ -3,48 +3,50 @@
  */
 var controllers = angular.module('app.controllers', []);
 
-controllers.controller('MenuController', ['$scope', '$rootScope', function($scope, $rootScope) {
-    $scope.showPage = function(page){
-        $scope.menu.setMainPage(page, {closeMenu: true})
-    };
-
-    $rootScope.$on('prediction:created', function(events, args){
-        $scope.showPage('components/predictions/main.html');
-    });
-}]);
-
-controllers.controller('MatchController', ['$scope', 'matchService', 'predictionService', '$rootScope', function($scope, matchService, predictionService, $rootScope) {
+controllers.controller('PageController', ['$scope', 'matchService', 'predictionService', function($scope, matchService, predictionService) {
+    $scope.predictions = [];
+    $scope.prediction = {};
     $scope.matches = [];
     $scope.match = {};
 
+    loadMatches();
+    loadPredictions();
+
+    $scope.showPage = function(page){
+        $scope.pageNavigator.pushPage(page, {animation: "lift"});
+    };
+
     $scope.showMatch = function(match){
-        $scope.matchNavigator.pushPage('components/matches/detail.html', {animation: "slide"});
+        $scope.showPage('components/matches/detail.html');
         $scope.match = match;
     };
 
-    matchService.list().then(function(result){
-        $scope.matches = result.data.data;
-    });
+
 
     $scope.predictMatch = function(result){
         predictionService.create($scope.match.id, result).then(function(result){
-            $rootScope.$broadcast('prediction:created', {predictionId: result.data.id});
+            loadPredictions();
+            $scope.pageTabBar.setActiveTab(1);
         });
     };
-}]);
-
-controllers.controller('PredictionController', ['$scope', 'predictionService', function($scope, predictionService) {
-    $scope.predictions = [];
-    $scope.prediction = {};
 
     $scope.showPrediction = function(prediction){
-        $scope.predictionNavigator.pushPage('components/predictions/detail.html', {animation: "slide"});
+        $scope.showPage('components/matches/detail.html');
         $scope.prediction = prediction;
     };
 
-    predictionService.list().then(function(result){
-        $scope.predictions = result.data.data;
-    });
-}]);
 
+
+    function loadPredictions(){
+        matchService.list().then(function(result){
+            $scope.matches = result.data.data;
+        });
+    }
+
+    function loadMatches(){
+        predictionService.list().then(function(result){
+            $scope.predictions = result.data.data;
+        });
+    }
+}]);
 

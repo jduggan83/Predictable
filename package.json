@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jduggan83/predictable/issues"
   },
-  "homepage": "https://github.com/jduggan83/predictable#readme"
+  "homepage": "https://github.com/jduggan83/predictable#readme",
+  "dependencies": {
+    "onsenui": "^2.0.0-rc.17"
+  }
 }

@@ -1,12 +1,6 @@
 <ons-page>
-	<ons-toolbar>
-	  <div class="left">
-		<ons-toolbar-button  onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
-	  </div>
-	  <div class="center">Predictions</div>
-	</ons-toolbar>
 	<ons-list>
-		<ons-list-item modifier="chevron" class="item" ng-repeat="prediction in predictions" ng-click="showPrediction(prediction)">
+		<ons-list-item class="item"  ng-click="showPrediction(prediction)" ng-repeat="prediction in predictions">
 			<ons-row>
 				<ons-col width="80px">
 
