@@ -1,23 +1,22 @@
 <ons-page>
-    <div class="page center">
-        <div class="row">
-            <div class="col">
-                <ons-text-input placeholder="id" ng-model="id">
-                </ons-text-input>
-            </div>
+    <ons-toolbar>
+        <div class="center">Login</div>
+        <div class="right">
+            <ons-toolbar-button>
+                <ons-icon icon="ion-log-in, material:md-sign-in"></ons-icon>
+            </ons-toolbar-button>
         </div>
-        <div class="row">
-            <div class="col">
-                <input type="password" placeholder="password" ng-model="password" class="topcoat-text-input">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <ons-button ng-click="login(id, password)">
-                    Login
-                </ons-button>
-            </div>
-        </div>
+    </ons-toolbar>
+    <div style="text-align: center; margin-top: 30px;">
+        <p>
+            <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+        </p>
+        <p>
+            <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+        </p>
+        <p style="margin-top: 30px;">
+            <ons-button modifier="large" ng-click="login()">Sign In</ons-button>
+        </p>
+        <ons-button modifier="quiet">Forgot password?</ons-button>
     </div>
 </ons-page>
