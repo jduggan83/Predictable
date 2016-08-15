@@ -3,7 +3,10 @@
 const Nodal = require('nodal');
 const Prediction = Nodal.require('app/models/prediction.js');
 
-class V1PredictionsController extends Nodal.AuthController {
+
+const AuthController = Nodal.require('app/controllers/auth_controller.js');
+
+class V1PredictionsController extends AuthController {
 
   index() {
 
@@ -31,11 +34,17 @@ class V1PredictionsController extends Nodal.AuthController {
 
   create() {
 
-    Prediction.create(this.params.body, (err, model) => {
+    this.authorize((accessToken, user) => {
 
-      this.respond(err || model);
+      this.params.body.user_id = user.get('id');
 
+      Prediction.create(this.params.body, (err, model) => {
+
+        this.respond(err || model);
+
+      });
     });
+
 
   }
 
