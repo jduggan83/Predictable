@@ -1,18 +1,16 @@
 <ons-page>
 	<ons-list>
-		<ons-list-item class="item" ng-click="showMatch(match)" ng-repeat="match in matches">
-			<ons-row>
-				<ons-col width="80px">
+		<ons-list-item ng-click="showMatch(match)" ng-repeat="match in matches" tappable>
+			<div class="left">
 
-				</ons-col>
-				<ons-col>
-					<header>
-						<span class="item-title">{{match.home}} v {{match.away}}</span>
-						<span class="item-label">Venue: {{match.home}}</span>
-					</header>
-					<p class="item-desc">{{match.information}}</p>
-				</ons-col>
-			</ons-row>
+			</div>
+			<div class="center" style="text-align: center;">
+				<span class="list__item__title">{{match.home}} V {{match.away}}</span>
+				<span class="list__item__subtitle">Live on Sky</span>
+			</div>
+			<div class="right">
+
+			</div>
 		</ons-list-item>
 	</ons-list>
 </ons-page>

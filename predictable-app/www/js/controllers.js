@@ -21,21 +21,22 @@ controllers.controller('PageController', ['$scope', 'matchService', 'predictionS
         $scope.match = match;
     };
 
-
-
     $scope.predictMatch = function(result){
         predictionService.create($scope.match.id, result).then(function(result){
             loadPredictions();
+            $scope.pageNavigator.popPage();
             $scope.pageTabBar.setActiveTab(1);
         });
     };
 
     $scope.showPrediction = function(prediction){
-        $scope.showPage('components/matches/detail.html');
+        $scope.showPage('components/predictions/detail.html');
         $scope.prediction = prediction;
     };
 
-
+    $scope.login = function(){
+        $scope.showPage('components/common/splitter.html');
+    };
 
     function loadPredictions(){
         matchService.list().then(function(result){

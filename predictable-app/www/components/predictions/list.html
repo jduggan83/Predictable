@@ -1,17 +1,18 @@
 <ons-page>
 	<ons-list>
-		<ons-list-item class="item"  ng-click="showPrediction(prediction)" ng-repeat="prediction in predictions">
-			<ons-row>
-				<ons-col width="80px">
+		<ons-list-item ng-click="showPrediction(prediction)" ng-repeat="prediction in predictions" tappable>
+			<div class="left">
 
-				</ons-col>
-				<ons-col>
-					<header>
-						<span class="item-title">{{prediction.match.home}} v {{prediction.match.away}}</span>
-						<span class="item-label">{{prediction.result}}</span>
-					</header>
-				</ons-col>
-			</ons-row>
+			</div>
+			<div class="center" style="text-align: center;">
+				<span ng-if="prediction.result=='HOME'" class="list__item__title">{{prediction.match.home}} to beat {{prediction.match.away}}</span>
+				<span ng-if="prediction.result=='AWAY'" class="list__item__title">{{prediction.match.away}} to beat {{prediction.match.home}}</span>
+				<span ng-if="prediction.result=='DRAW'" class="list__item__title">{{prediction.match.home}} and {{prediction.match.away}} to draw</span>
+				<span class="list__item__subtitle">Tap to change</span>
+			</div>
+			<div class="right">
+
+			</div>
 		</ons-list-item>
 	</ons-list>
 </ons-page>
