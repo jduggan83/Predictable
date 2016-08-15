@@ -3,11 +3,14 @@
  */
 var controllers = angular.module('app.controllers', []);
 
-controllers.controller('PageController', ['$scope', 'matchService', 'predictionService', function($scope, matchService, predictionService) {
+controllers.controller('PageController', ['$scope', 'matchService', 'predictionService', 'loginService', function($scope, matchService, predictionService, loginService) {
     $scope.predictions = [];
     $scope.prediction = {};
     $scope.matches = [];
     $scope.match = {};
+    $scope.login = {};
+    $scope.login.username = '';
+    $scope.login.password = '';
 
     loadMatches();
     loadPredictions();
@@ -35,7 +38,9 @@ controllers.controller('PageController', ['$scope', 'matchService', 'predictionS
     };
 
     $scope.login = function(){
-        $scope.showPage('components/common/splitter.html');
+        loginService.login($scope.login.username, $scope.login.password).then(function(){
+            $scope.showPage('components/common/splitter.html');
+        });
     };
 
     function loadPredictions(){

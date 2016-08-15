@@ -6,7 +6,7 @@ var services = angular.module('app.services', []);
 services.factory('matchService', ['$http', 'CONFIG', function($http, CONFIG) {
     return {
         list: function(){
-            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/matches');
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/matches?access_token=' + CONFIG.access_token);
         },
         find:  function(matchId){
             return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/matches/' + matchId);
@@ -35,10 +35,26 @@ services.factory('predictionService', ['$http', 'CONFIG', function($http, CONFIG
                 result: result
             };
 
-            return $http.post(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions', prediction);
+            return $http.post(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions?access_token=' + CONFIG.access_token, prediction);
         },
         update:  function(prediction){
             return $http.put(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions/' + prediction.id, prediction);
+        }
+    };
+}]);
+
+services.factory('loginService', ['$http', 'CONFIG', function($http, CONFIG) {
+    return {
+        login: function(username, password){
+            var loginData = {
+                grant_type: "password",
+                username: username,
+                password: password
+            };
+            
+            return $http.post(CONFIG.baseUrl + '/'+ CONFIG.version + '/access_tokens', loginData).then(function (response) {
+                CONFIG.access_token = response.data.data[0].access_token;
+            });
         }
     };
 }]);
