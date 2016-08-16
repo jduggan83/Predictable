@@ -20,17 +20,16 @@ services.factory('matchService', ['$http', 'CONFIG', function($http, CONFIG) {
     };
 }]);
 
-services.factory('predictionService', ['$http', 'CONFIG', function($http, CONFIG) {
+services.factory('predictionService', ['$http', 'CONFIG', 'userService', function($http, CONFIG, userService) {
     return {
         list: function(){
-            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions?user__id='+CONFIG.user_id);
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions?user__id='+ userService.getUserId());
         },
         find:  function(predictionId){
             return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions/' + predictionId);
         },
         create:  function(matchId, result){
             var prediction = {
-                user_id: CONFIG.user_id,
                 match_id: matchId,
                 result: result
             };
@@ -41,23 +40,26 @@ services.factory('predictionService', ['$http', 'CONFIG', function($http, CONFIG
             return $http.put(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions/' + prediction.id, prediction);
         },
         findByMatch:  function(matchId){
-            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions?match__id' + matchId + '&user__id='+CONFIG.user_id);
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions?match__id' + matchId + '&user__id='+ userService.getUserId());
         }
     };
 }]);
 
-services.factory('loginService', ['$http', 'CONFIG', function($http, CONFIG) {
+services.factory('userService', ['OAuth', function(OAuth) {
+    var userId = null;
+
     return {
         login: function(username, password){
-            var loginData = {
-                grant_type: "password",
+            var user = {
                 username: username,
                 password: password
             };
-            
-            return $http.post(CONFIG.baseUrl + '/'+ CONFIG.version + '/access_tokens', loginData).then(function (response) {
-                CONFIG.access_token = response.data.data[0].access_token;
+            return OAuth.getAccessToken(user).then(function(response){
+                userId = response.data.data[0].user_id
             });
+        },
+        getUserId: function(){
+            return userId;
         }
     };
 }]);

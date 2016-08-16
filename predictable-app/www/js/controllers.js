@@ -3,14 +3,10 @@
  */
 var controllers = angular.module('app.controllers', []);
 
-controllers.controller('PageController', ['$scope', 'matchService', 'predictionService', 'loginService', function($scope, matchService, predictionService, loginService) {
+controllers.controller('PageController', ['$scope', 'matchService', 'predictionService', 'userService', function($scope, matchService, predictionService, userService) {
     $scope.predictions = [];
     $scope.matches = [];
     $scope.match = {};
-    $scope.login = {};
-    $scope.login.username = '';
-    $scope.login.password = '';
-
     loadMatches();
     loadPredictions();
 
@@ -39,12 +35,6 @@ controllers.controller('PageController', ['$scope', 'matchService', 'predictionS
         });
     };
 
-    $scope.login = function(){
-        loginService.login($scope.login.username, $scope.login.password).then(function(){
-            $scope.showPage('components/common/splitter.html');
-        });
-    };
-
     function loadMatches(){
         matchService.list().then(function(result){
             $scope.matches = result.data.data;
@@ -58,3 +48,33 @@ controllers.controller('PageController', ['$scope', 'matchService', 'predictionS
     }
 }]);
 
+controllers.controller('LoginController', ['$scope', '$rootScope', 'userService', function($scope, $rootScope, userService) {
+    $scope.login = {};
+    $scope.login.username = '';
+    $scope.login.password = '';
+
+    $scope.login = function(){
+        var user = {
+            username: $scope.login.username,
+            password: $scope.login.password
+        };
+        userService.login($scope.login.username, $scope.login.password).then(function(){
+            
+        });
+    };
+
+    $rootScope.$on('oauth:error', function(event, rejection) {
+        // Ignore `invalid_grant` error - should be catched on `LoginController`.
+        if ('invalid_grant' === rejection.data.error) {
+            return;
+        }
+
+        // Refresh token when a `invalid_token` error occurs.
+        if ('invalid_token' === rejection.data.error) {
+            return OAuth.getRefreshToken();
+        }
+
+        // Redirect to `/login` with the `error_reason`.
+       // return $window.location.href = '/login?error_reason=' + rejection.data.error;
+    });
+}]);

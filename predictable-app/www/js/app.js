@@ -18,8 +18,8 @@ config(['$provide', 'OAuthProvider', function($provide, OAuthProvider) {
 
     OAuthProvider.configure({
         baseUrl: CONFIG.baseUrl + '/'+ CONFIG.version,
-        clientId: '',
-        clientSecret: '',
+        clientId: 'clientId',
+        clientSecret: 'clientSecret',
         grantPath: '/access_tokens'
     });
 }])
