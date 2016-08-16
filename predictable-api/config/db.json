@@ -2,11 +2,11 @@
   "development": {
     "main": {
       "adapter": "postgres",
-      "host": "fizzy-cherry.db.elephantsql.com",
+      "host": "localhost",
       "port": "5432",
-      "user": "xmzhdcnw",
-      "password": "ndBr9zXjOU6LaUBlYSXjfXrnhth_ZmT7",
-      "database": "xmzhdcnw"
+      "user": "postgres",
+      "password": "postgres",
+      "database": "predictable_api_development"
     }
   },
   "test": {

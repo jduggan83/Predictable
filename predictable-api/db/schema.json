@@ -1,6 +1,6 @@
 {
 
-  "migration_id": 2016081116181206,
+  "migration_id": 2016081214264486,
 
   "models": {
 
@@ -34,7 +34,8 @@
         {"name": "venue", "type": "string", "properties": {}},
         {"name": "odds_home", "type": "string", "properties": {}},
         {"name": "odds_away", "type": "string", "properties": {}},
-        {"name": "odds_draw", "type": "string", "properties": {}}
+        {"name": "odds_draw", "type": "string", "properties": {}},
+        {"name": "result", "type": "string", "properties": {}}
       ]
 
     },
@@ -50,7 +51,8 @@
         {"name": "user_id", "type": "int", "properties": {}},
         {"name": "created_at", "type": "datetime", "properties": {}},
         {"name": "updated_at", "type": "datetime", "properties": {}},
-        {"name": "processed", "type": "boolean", "properties": {}}
+        {"name": "processed", "type": "boolean", "properties": {}},
+        {"name": "correct", "type": "boolean", "properties": {}}
       ]
 
     },
