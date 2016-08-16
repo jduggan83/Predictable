@@ -39,6 +39,9 @@ services.factory('predictionService', ['$http', 'CONFIG', function($http, CONFIG
         },
         update:  function(prediction){
             return $http.put(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions/' + prediction.id, prediction);
+        },
+        findByMatch:  function(matchId){
+            return $http.get(CONFIG.baseUrl + '/'+ CONFIG.version + '/predictions?match__id' + matchId + '&user__id='+CONFIG.user_id);
         }
     };
 }]);

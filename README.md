@@ -27,15 +27,11 @@ This is phonegap app, using angular and Onsen UI. It is an offline first app usi
     $ phonegap build android    #apk file goes to app/platforms/android
     $ phonegap build ios        #on an ios environment only
     
-	  
-#### Design Ideas
 
-##### Match Details
+##### todo
 
-- Teams at the top
-- Then Buttons for "Sweden to Win", "Draw", or Ireland - a picture of some sort underneath.
-- Date, time, and location of the game, and if it is on TV
-- A property of a match is draw possible.
-- This prediction will then show in my prediction in a list where the item will show - "Sweden to beaten Ireland" - tapping this will bring you back to match details again where the prediction can be changed
-- Have odds below the predictions
-- Latest headlines or news on the match, or either of the teams next.
+- stop making 2 predictions on 1 match, and bubble prediction information to fixture if one is made
+- prediction/match details page - should be same as match but with prediction on it.
+- oauth angular implementation
+- lock down all prediction requests with authorize
+- style list and details pages

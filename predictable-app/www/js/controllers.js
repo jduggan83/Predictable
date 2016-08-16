@@ -5,7 +5,6 @@ var controllers = angular.module('app.controllers', []);
 
 controllers.controller('PageController', ['$scope', 'matchService', 'predictionService', 'loginService', function($scope, matchService, predictionService, loginService) {
     $scope.predictions = [];
-    $scope.prediction = {};
     $scope.matches = [];
     $scope.match = {};
     $scope.login = {};
@@ -19,9 +18,17 @@ controllers.controller('PageController', ['$scope', 'matchService', 'predictionS
         $scope.pageNavigator.pushPage(page, {animation: "lift"});
     };
 
-    $scope.showMatch = function(match){
+    $scope.showMatchDetail = function(matchId){
+        $scope.match = {};
+        $scope.prediction = {};
+        
+        matchService.find(matchId).then(function(result){
+            $scope.match = result.data.data;
+        });
+        predictionService.findByMatch(matchId).then(function(result){
+            $scope.prediction = result.data.data;
+        });
         $scope.showPage('components/matches/detail.html');
-        $scope.match = match;
     };
 
     $scope.predictMatch = function(result){
@@ -32,24 +39,19 @@ controllers.controller('PageController', ['$scope', 'matchService', 'predictionS
         });
     };
 
-    $scope.showPrediction = function(prediction){
-        $scope.showPage('components/predictions/detail.html');
-        $scope.prediction = prediction;
-    };
-
     $scope.login = function(){
         loginService.login($scope.login.username, $scope.login.password).then(function(){
             $scope.showPage('components/common/splitter.html');
         });
     };
 
-    function loadPredictions(){
+    function loadMatches(){
         matchService.list().then(function(result){
             $scope.matches = result.data.data;
         });
     }
 
-    function loadMatches(){
+    function loadPredictions(){
         predictionService.list().then(function(result){
             $scope.predictions = result.data.data;
         });
